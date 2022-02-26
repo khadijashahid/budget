@@ -50,18 +50,19 @@ var budgetController = (function() {
 	return {
 		addItem: function(type, des, val) {
 			var newItem, ID;
-
+// create new ID
 			if(data.allItems[type].length > 0) {
 				ID = data.allItems[type][data.allItems[type].length - 1].id + 1;
 			} else {
 				ID = 0;
 			}
+			// create new item
 			if(type === 'exp') {
 				newItem = new Expense(ID, des, val);
 			} else if(type === 'inc') {
 				newItem = new Income(ID, des, val);
 			}
-
+// push it into data structure
 			data.allItems[type].push(newItem);
 
 			return newItem;
@@ -189,11 +190,11 @@ var UIController = (function() {
 			if (type === 'inc') {
 				element = DOMstrings.incomeContainer;
 
-				html = '<div class="item" id="inc-%id%"><div class="item_description">%description%</div><div class="right "><div class="item_value">%value%</div><div class="item_delete"><button class="item_delete_btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+				html = '<div class="item clearfix" id="inc-%id%"><div class="item_description">%description%</div><div class="right clearfix "><div class="item_value">%value%</div><div class="item_delete"><button class="item_delete_btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			} else if (type === 'exp') {
 				element = DOMstrings.expensesContainer;
 
-				html = '<div class="item" id="exp-%id%"><div class="item_description">%description%</div><div class="right "><div class="item_value">%value%</div><div class="item_percentage">21%</div><div class="item_delete"><button class="item_delete_btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
+				html = '<div class="item clearfix" id="exp-%id%"><div class="item_description">%description%</div><div class="right clearfix "><div class="item_value">%value%</div><div class="item_percentage">21%</div><div class="item_delete"><button class="item_delete_btn"><i class="ion-ios-close-outline"></i></button></div></div></div>';
 			}
 
 
